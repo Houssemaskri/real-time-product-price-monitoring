@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prix moyen des produits</title>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const socket = io.connect("ws://localhost:3000")
+
+        socket.on('averagePriceUpdated', (data) => {
+            document.getElementById('averagePrice').innerText = `Prix moyen: ${data.averagePrice}`;
+        });
+    });
+</script>
+</head>
+<body>
+<h1 id="averagePrice">Prix moyen: </h1>
+</body>
+</html>
